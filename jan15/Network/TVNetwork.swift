@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 //1
-enum MovieApi {
+enum TVNetwork {
     case airingToday
     case onTheAir
     case popular
@@ -17,9 +17,9 @@ enum MovieApi {
 }
 
 //2
-extension MovieApi: TargetType {
+extension TVNetwork: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "https://api.themoviedb.org/3/tv") else {
+        guard let url = URL(string: API.baseURL+"/tv") else {
             fatalError("baseURL could not be configured" )
         }
         return url
@@ -59,7 +59,7 @@ extension MovieApi: TargetType {
     var task: Task {
         switch self {
         case .topRated, .popular, .onTheAir, .airingToday:
-            return .requestParameters(parameters: ["api_key" : "b804ea7f3826d58a902a69a0e017708f"], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["api_key" : API.apiKey], encoding: URLEncoding.queryString)
         }
     }
     

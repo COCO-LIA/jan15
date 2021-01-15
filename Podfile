@@ -6,6 +6,8 @@ target 'jan15' do
   use_frameworks!
 
 pod 'Moya'
+pod 'Kingfisher'
+pod 'ProgressHUD'
 
   # Pods for jan15
 
